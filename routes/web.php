@@ -12,8 +12,10 @@
 */
 
 Route::get('/', 'LoginController@login');
+Route::post('/logout', 'LoginController@logout');
 Route::post('/login', 'LoginController@authenticate');
 
+Route::middleware('auth')->group(function() {
 Route::get('/projects', 'ProjectsController@index');
 Route::get('/projects/add', 'ProjectsController@create');
 Route::post('/projects/store', 'ProjectsController@store');
@@ -24,3 +26,5 @@ Route::get('/projects/{project}/tasks', 'TasksController@create');
 Route::get('/projects/tasks/{task}/edit', 'TasksController@edit');
 Route::post('/projects/tasks/{task}/update', 'TasksController@update');
 Route::post('/projects/{project}/tasks', 'TasksController@store');
+
+});
