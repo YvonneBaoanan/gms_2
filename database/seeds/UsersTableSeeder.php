@@ -12,9 +12,9 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $user = new App\User();
-		$user->password = Hash::make('pasadoyan');
-		$user->email = 'appbogado2019@gmail.com';
-		$user->name = 'App Bogado';
+        $user->name = 'Admin';
+        $user->email = 'appbogado2019.com';
+		$user->password = bcrypt('pasadoyan');
 		$user->save();
     }
 }
